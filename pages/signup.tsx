@@ -1,3 +1,13 @@
+import { useAuth } from "../contexts/authContext";
+
 export default function SignUp() {
-  return <h1>Sign Up Page</h1>;
+  const { signUp } = useAuth();
+  const handleFormSubmit = async () => {
+    try {
+      await signUp("test@test.com", "password");
+    } catch (e) {
+      console.log("Error signing up", e);
+    }
+  };
+  return <button onClick={handleFormSubmit}>Sign Up</button>;
 }
