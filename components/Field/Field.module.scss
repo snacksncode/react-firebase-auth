@@ -8,14 +8,23 @@
     padding: 0.65em 1em;
     border-radius: var(--br);
     border: 1px solid var(--bg-400);
+    font-weight: 500;
+    font-family: inherit;
+    &--error {
+      border-color: var(--danger-400);
+      box-shadow: 0 0 2px var(--danger-400);
+      color: var(--danger-400);
+    }
+    &--valid {
+      border-color: var(--success-400);
+      box-shadow: 0 0 2px var(--success-400);
+      color: var(--success-400);
+    }
     &:focus {
       border-color: var(--accent-400);
       box-shadow: 0 0 2px var(--accent-400);
       outline: none;
-    }
-    &--error {
-      border-color: var(--danger-400);
-      color: var(--danger-400);
+      color: inherit;
     }
   }
   .errorText {

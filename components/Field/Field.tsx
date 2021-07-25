@@ -6,21 +6,22 @@ interface FieldProps {
   label: string;
   type: "text" | "password";
   error?: boolean;
+  valid?: boolean;
   errorText?: string;
 }
 
-const Field = ({ label, error, errorText }: FieldProps) => {
-  console.log(error, styles["wrapper--error"]);
+const Field = ({ label, error, errorText, type, valid }: FieldProps) => {
   const _label = label.toLowerCase();
   const inputClasses = classNames(styles.input, {
     [styles["input--error"]]: error,
+    [styles["input--valid"]]: valid,
   });
   return (
     <div className={styles.wrapper}>
       <label className={styles.label} htmlFor={_label}>
         {label}
       </label>
-      <input className={inputClasses} id={_label} name={_label} />
+      <input className={inputClasses} type={type} id={_label} name={_label} />
       {error && errorText && <div className={styles.errorText}>{errorText}</div>}
     </div>
   );
