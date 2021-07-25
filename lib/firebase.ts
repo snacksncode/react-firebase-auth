@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 
-const app = !firebase.apps.length ? setupApp() : firebase.app();
+export const app = !firebase.apps.length ? setupApp() : firebase.app();
 
 function setupApp() {
   return firebase.initializeApp({
@@ -13,6 +13,4 @@ function setupApp() {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   });
 }
-
 export const auth = app.auth();
-export default app;

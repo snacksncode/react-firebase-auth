@@ -1,12 +1,13 @@
-import firebaseApp from "firebase/app";
+import firebase from "firebase/app";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import firebase, { auth } from "../lib/firebase";
+import { auth } from "../lib/firebase";
 
 interface Context {
-  currentUser: firebaseApp.User | null;
-  signUp: (email: string, password: string) => Promise<firebaseApp.auth.UserCredential | null>;
-  logIn: (email: string, password: string) => Promise<firebaseApp.auth.UserCredential | null>;
+  currentUser: firebase.User | null;
+  signUp: (email: string, password: string) => Promise<firebase.auth.UserCredential | null>;
+  logIn: (email: string, password: string) => Promise<firebase.auth.UserCredential | null>;
   logOut: () => Promise<void>;
+  loading: boolean;
 }
 
 const defaultContext: Context = {
@@ -14,6 +15,7 @@ const defaultContext: Context = {
   signUp: async () => null,
   logIn: async () => null,
   logOut: async () => {},
+  loading: false,
 };
 
 const AuthContext = createContext<Context>(defaultContext);
@@ -23,7 +25,8 @@ export const useAuth = () => {
 };
 
 const AuthProvider: React.FC = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<firebaseApp.User | null>(null);
+  const [currentUser, setCurrentUser] = useState<firebase.User | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const logIn = (email: string, password: string) => {
     return auth.signInWithEmailAndPassword(email, password);
@@ -37,16 +40,18 @@ const AuthProvider: React.FC = ({ children }) => {
     return auth.signOut();
   };
 
-  const providedValues = {
+  const providedValues: Context = {
     currentUser,
     signUp,
     logIn,
     logOut,
+    loading,
   };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      setLoading(false);
     });
     return () => unsubscribe();
   }, []);

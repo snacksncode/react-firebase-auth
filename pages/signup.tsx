@@ -21,8 +21,8 @@ export default function SignUp() {
 
   return (
     <FullPageCenter>
-      <button onClick={handleSignUp}>Sign Up</button>
-      <button onClick={handleLogIn}>Log In</button>
+      {/* <button onClick={handleSignUp}>Sign Up</button>
+      <button onClick={handleLogIn}>Log In</button> */}
       <SignUpForm />
     </FullPageCenter>
   );

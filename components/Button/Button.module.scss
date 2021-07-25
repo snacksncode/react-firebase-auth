@@ -1,0 +1,20 @@
+.wrapper {
+  padding: 0.5em 1.5em;
+  display: inline-block;
+  text-align: center;
+  justify-self: center;
+  background-color: var(--accent-400);
+  color: var(--white);
+  font-weight: 500;
+  border-radius: var(--br);
+  cursor: pointer;
+  transition: background-color 250ms ease;
+  &:hover,
+  &:focus-within {
+    background-color: var(--accent-500);
+  }
+  &:focus-visible {
+    outline: 2px dashed var(--accent-500);
+    outline-offset: 5px;
+  }
+}

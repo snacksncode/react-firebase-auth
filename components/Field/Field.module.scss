@@ -1,3 +1,27 @@
 .wrapper {
   display: flex;
+  flex-direction: column;
+  .label {
+    margin-bottom: 0.5rem;
+  }
+  .input {
+    padding: 0.65em 1em;
+    border-radius: var(--br);
+    border: 1px solid var(--bg-400);
+    &:focus {
+      border-color: var(--accent-400);
+      box-shadow: 0 0 2px var(--accent-400);
+      outline: none;
+    }
+    &--error {
+      border-color: var(--danger-400);
+      color: var(--danger-400);
+    }
+  }
+  .errorText {
+    font-size: 0.8em;
+    margin-top: 0.25rem;
+    color: var(--danger-400);
+    font-weight: 500;
+  }
 }
