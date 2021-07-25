@@ -1,2 +1,2 @@
-import { FullPageCenter } from "./FullPageCenter";
+import FullPageCenter from "./FullPageCenter";
 export default FullPageCenter;
