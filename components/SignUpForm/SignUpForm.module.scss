@@ -11,11 +11,15 @@
     text-align: center;
     color: var(--clr-neutral-800);
     margin-top: 0;
+    margin-bottom: 1em;
   }
   .form {
     display: grid;
     grid-template-columns: auto;
     grid-auto-rows: auto;
-    gap: 1.5rem;
+    gap: 2rem;
+    & > *:last-child {
+      margin-top: 1rem;
+    }
   }
 }

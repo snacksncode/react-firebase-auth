@@ -7,9 +7,10 @@
   }
   .inputWrapper {
     border-radius: var(--br);
-    border: 1px solid var(--bg-400);
+    border: 2px solid var(--bg-400);
     background-color: var(--bg-100);
     display: flex;
+    transition: border-color 250ms ease;
     .input {
       padding: 0.75em 1em;
       width: 100%;
@@ -21,12 +22,12 @@
     }
     &--error {
       border-color: var(--danger-400);
-      box-shadow: 0 0 2px var(--danger-400);
+      // box-shadow: 0 0 2px var(--danger-400);
       color: var(--danger-400);
     }
     &--valid {
       border-color: var(--success-400);
-      box-shadow: 0 0 2px var(--success-400);
+      // box-shadow: 0 0 2px var(--success-400);
       color: var(--success-400);
     }
     .passwordPeek {
@@ -44,12 +45,9 @@
     &:focus-within,
     &:focus {
       border-color: var(--accent-400);
-      box-shadow: 0 0 2px var(--accent-400);
+      // box-shadow: 0 0 2px var(--accent-400);
       color: inherit;
-      // outline: none;
       .input {
-        // outline: none !important;
-        // box-shadow: none;
         outline: none;
       }
     }

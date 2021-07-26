@@ -6,20 +6,20 @@ import styles from "./Button.module.scss";
 interface ButtonProps {
   onClick?: () => any;
   loading?: boolean;
+  role?: string;
   text: string;
 }
 
-const Button = ({ onClick, loading, text }: ButtonProps): JSX.Element => {
+const Button = ({ onClick, loading, text, role }: ButtonProps): JSX.Element => {
   const buttonClasses = classNames(styles.wrapper, {
     [styles["wrapper--loading"]]: loading,
   });
-  const { ref, handleKeyboardEvent } = useKeyClick();
   const handleClick = () => {
     if (onClick) onClick();
   };
 
   return (
-    <div tabIndex={0} ref={ref} onKeyPress={handleKeyboardEvent} onClick={handleClick} className={buttonClasses}>
+    <button tabIndex={0} role={role || "button"} onClick={handleClick} className={buttonClasses}>
       <span className={styles.text}>{text}</span>
       {loading && (
         <div className={styles.loader}>
@@ -44,7 +44,7 @@ const Button = ({ onClick, loading, text }: ButtonProps): JSX.Element => {
           </svg>
         </div>
       )}
-    </div>
+    </button>
   );
 };
 
