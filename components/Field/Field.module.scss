@@ -1,15 +1,24 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+
   .label {
     margin-bottom: 0.5rem;
   }
-  .input {
-    padding: 0.65em 1em;
+  .inputWrapper {
     border-radius: var(--br);
     border: 1px solid var(--bg-400);
-    font-weight: 500;
-    font-family: inherit;
+    background-color: var(--bg-100);
+    display: flex;
+    .input {
+      padding: 0.75em 1em;
+      width: 100%;
+      font-weight: 500;
+      border: none;
+      background-color: transparent !important;
+      font-family: inherit;
+      color: inherit;
+    }
     &--error {
       border-color: var(--danger-400);
       box-shadow: 0 0 2px var(--danger-400);
@@ -20,11 +29,29 @@
       box-shadow: 0 0 2px var(--success-400);
       color: var(--success-400);
     }
+    .passwordPeek {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 0.75rem;
+      margin-left: 0.25rem;
+      svg {
+        cursor: pointer;
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+    }
+    &:focus-within,
     &:focus {
       border-color: var(--accent-400);
       box-shadow: 0 0 2px var(--accent-400);
-      outline: none;
       color: inherit;
+      // outline: none;
+      .input {
+        // outline: none !important;
+        // box-shadow: none;
+        outline: none;
+      }
     }
   }
   .errorText {

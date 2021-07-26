@@ -1,5 +1,6 @@
 import classNames from "classnames";
-import React, { ReactNode } from "react";
+import React, { useRef } from "react";
+import useKeyClick from "../../hooks/useKeyClick";
 import styles from "./Button.module.scss";
 
 interface ButtonProps {
@@ -12,12 +13,13 @@ const Button = ({ onClick, loading, text }: ButtonProps): JSX.Element => {
   const buttonClasses = classNames(styles.wrapper, {
     [styles["wrapper--loading"]]: loading,
   });
+  const { ref, handleKeyboardEvent } = useKeyClick();
   const handleClick = () => {
     if (onClick) onClick();
   };
 
   return (
-    <div tabIndex={0} onClick={handleClick} className={buttonClasses}>
+    <div tabIndex={0} ref={ref} onKeyPress={handleKeyboardEvent} onClick={handleClick} className={buttonClasses}>
       <span className={styles.text}>{text}</span>
       {loading && (
         <div className={styles.loader}>
